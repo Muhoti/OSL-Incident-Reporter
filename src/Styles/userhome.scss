@@ -1,0 +1,44 @@
+@import "./variables";
+@import "./mediaquery";
+
+.userhome {
+  padding: 1em;
+  height: 100% !important;
+  overflow-y: auto;
+
+  .vtop {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    width: fit-content; /* Standard property */
+    width: -moz-fit-content; /* Firefox 3+, Firefox for Android 4+ */
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+
+    .vitem {
+      p {
+        padding: 10px 20px;
+        cursor: pointer;
+        color: $primary;
+        background-color: $bg1;
+        font-size: small;
+        width: fit-content; /* Standard property */
+        width: -moz-fit-content; /* Firefox 3+, Firefox for Android 4+ */
+      }
+      p:hover {
+        background-color: $primary;
+        color: white;
+      }
+    }
+    .vactive {
+      p {
+        padding: 10px 20px;
+        cursor: pointer;
+        background-color: $primary;
+        color: white;
+        font-size: small;
+        width: fit-content; /* Standard property */
+        width: -moz-fit-content; /* Firefox 3+, Firefox for Android 4+ */
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+@import "./mediaquery";
+@import "./variables";
+
+.home {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100% !important;
+
+  .main {
+    display: grid;
+    width: 100%;
+    height: 100%;
+
+    .right_panel {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      overflow: hidden !important;
+
+      .full {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,397 @@
+@import "./variables";
+@import "./0_mediaquery";
+
+.data {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  width: 100vw;
+  background-color: $bg;
+  margin: 0 !important;
+  height: 100vh;
+
+  .top {
+    h3 {
+      color: $primary;
+      margin: 1em;
+    }
+
+    .search {
+      background-color: white;
+      height: 44px;
+      border-bottom: 1px solid $line;
+      border-top: 1px solid $line;
+      input {
+        margin: 10px 0 0 20px;
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      i {
+        cursor: pointer;
+      }
+    }
+    .bar {
+      padding: 0 1em 0 1em;
+
+      .container {
+        display: grid;
+        grid-template-columns: repeat(6, auto);
+        width: fit-content;
+
+        .item {
+          border-top: 1px solid $line;
+          border-left: 1px solid $line;
+          border-right: 1px solid $line;
+          border-bottom: 1px solid transparent;
+          margin-bottom: -1px;
+          padding: 5px 1em 5px 1em;
+          font-weight: 400;
+          font-size: medium;
+          cursor: pointer;
+        }
+
+        .active {
+          color: $accent;
+          border-top: 1px solid $line;
+          border-left: 1px solid $line;
+          border-right: 1px solid $line;
+          border-bottom: 1px solid white;
+          background-color: white;
+          padding: 5px 1em 5px 1em;
+          font-weight: 400;
+          font-size: medium;
+          margin-bottom: -1px;
+          cursor: pointer;
+        }
+      }
+    }
+    @include maxwidth(mobile) {
+      * {
+        font-size: small !important;
+      }
+    }
+    @include maxwidth(tablet) {
+      * {
+        font-size: small !important;
+      }
+    }
+  }
+
+  .dc {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    .main {
+      margin: 0 1em 0 1em;
+      .head {
+        display: grid;
+        grid-template-columns: 1.2fr 0.3fr 0.7fr 0.5fr 0.5fr 0.5fr 0.7fr;
+        gap: 1px;
+        h4 {
+          background-color: #eef2f5;
+          padding: 5px 1em 5px 1em;
+          font-weight: 400;
+        }
+      }
+      .usr {
+        display: grid;
+        grid-template-columns: 1.2fr 0.3fr 0.7fr 0.5fr 0.5fr 0.5fr 0.7fr;
+        gap: 1px;
+        background-color: white;
+        box-shadow: 1px 1px 5px #60606030;
+        margin-bottom: 1px;
+        cursor: pointer;
+
+        h4 {
+          font-weight: 400;
+          padding: 5px;
+          font-size: small;
+        }
+      }
+      .usr:hover {
+        background-color: #eef2f5;
+      }
+    }
+
+    .right {
+      width: 300px;
+      position: relative;
+      padding: 1em 1em 1em 1em;
+      background-color: white;
+      border: 1px solid $line;
+      overflow-y: auto;
+      height: 100%;
+
+      .smap {
+        height: 200px;
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 1px 1px 5px #60606080;
+        border: 1px solid $line;
+      }
+
+      .div2equal {
+        grid-template-columns: auto auto !important;
+        gap: 10px !important;
+      }
+
+      p {
+        font-size: smaller;
+        padding: 3px 0 3px 0;
+      }
+      h4 {
+        color: $primary;
+        text-align: center;
+        margin: 10px;
+        font-size: small;
+      }
+
+      .list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        p {
+          padding: 0 !important;
+        }
+      }
+
+      h5 {
+        display: block;
+        margin: 1em 1em 1em auto;
+        color: $primarylighter;
+        cursor: pointer;
+        width: fit-content;
+      }
+      h5:hover {
+        color: $primarylight;
+      }
+    }
+
+    @include maxwidth(mobile) {
+      grid-template-columns: 1fr !important;
+
+      * {
+        font-size: x-small !important;
+      }
+
+      .right,
+      .left {
+        display: none !important;
+      }
+
+      .main {
+        margin: 0 1em 1em 1em;
+      }
+
+      .head {
+        grid-template-columns: 16px 1fr 0.7fr 0.7fr 0.7fr !important;
+        :nth-child(5) {
+          display: none !important;
+        }
+        :nth-child(7) {
+          display: none !important;
+        }
+      }
+
+      .usr {
+        grid-template-columns: 16px 1fr 0.7fr 0.7fr 0.7fr !important;
+        :nth-child(5) {
+          display: none !important;
+        }
+        :nth-child(7) {
+          display: none !important;
+        }
+      }
+    }
+
+    @include maxwidth(tablet) {
+      grid-template-columns: 1fr !important;
+
+      * {
+        font-size: x-small !important;
+      }
+
+      .right,
+      .left {
+        display: none !important;
+      }
+
+      .main {
+        margin: 0 1em 1em 1em;
+      }
+    }
+  }
+
+  .dcs {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    .mappeddata {
+      margin: 0 1em 0 1em;
+      .head {
+        display: grid;
+        grid-template-columns: 1.2fr 0.3fr 0.7fr 0.5fr 0.5fr 0.5fr;
+        gap: 1px;
+        h4 {
+          background-color: #eef2f5;
+          padding: 5px 1em 5px 1em;
+          font-weight: 400;
+        }
+      }
+      .usr {
+        display: grid;
+        grid-template-columns: 1.2fr 0.3fr 0.7fr 0.5fr 0.5fr 0.5fr;
+        gap: 1px;
+        background-color: white;
+        box-shadow: 1px 1px 5px #60606030;
+        margin-bottom: 1px;
+        cursor: pointer;
+
+        h4 {
+          font-weight: 400;
+          padding: 5px;
+          font-size: small;
+        }
+      }
+      .usr:hover {
+        background-color: #eef2f5;
+      }
+    }
+
+    .right {
+      width: 300px;
+      position: relative;
+      padding: 1em 1em 1em 1em;
+      background-color: white;
+      border: 1px solid $line;
+      overflow-y: auto;
+      height: 100%;
+
+      .smap {
+        height: 200px;
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 1px 1px 5px #60606080;
+        border: 1px solid $line;
+      }
+
+      .div2equal {
+        grid-template-columns: auto auto !important;
+        gap: 10px !important;
+      }
+
+      p {
+        font-size: smaller;
+        padding: 3px 0 3px 0;
+      }
+      h4 {
+        color: $primary;
+        text-align: center;
+        margin: 10px;
+        font-size: small;
+      }
+
+      .list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        p {
+          padding: 0 !important;
+        }
+      }
+
+      h5 {
+        display: block;
+        margin: 1em 1em 1em auto;
+        color: $primarylighter;
+        cursor: pointer;
+        width: fit-content;
+      }
+      h5:hover {
+        color: $primarylight;
+      }
+    }
+
+    @include maxwidth(mobile) {
+      grid-template-columns: 1fr !important;
+
+      * {
+        font-size: x-small !important;
+      }
+
+      .right,
+      .left {
+        display: none !important;
+      }
+
+      .main {
+        margin: 0 1em 1em 1em;
+      }
+
+      .head {
+        grid-template-columns: 16px 1fr 0.7fr 0.7fr 0.7fr !important;
+        :nth-child(5) {
+          display: none !important;
+        }
+        :nth-child(7) {
+          display: none !important;
+        }
+      }
+
+      .usr {
+        grid-template-columns: 16px 1fr 0.7fr 0.7fr 0.7fr !important;
+        :nth-child(5) {
+          display: none !important;
+        }
+        :nth-child(7) {
+          display: none !important;
+        }
+      }
+    }
+
+    @include maxwidth(tablet) {
+      grid-template-columns: 1fr !important;
+
+      * {
+        font-size: x-small !important;
+      }
+
+      .right,
+      .left {
+        display: none !important;
+      }
+
+      .main {
+        margin: 0 1em 1em 1em;
+      }
+    }
+  }
+
+  .activity {
+    box-sizing: border-box;
+    background: #f6fafd;
+    border: 1px solid hsl(228, 12%, 92%);
+    border-radius: 10px;
+    margin: 0 0 10px 0;
+
+    h4 {
+      box-sizing: border-box;
+      background: #edf2f5;
+      border: 1px solid #efeff2;
+      border-radius: 10px 10px 0px 0px;
+      font-size: smaller;
+      padding: 6px;
+    }
+
+    .div2equal {
+      grid-template-columns: auto 1fr;
+      :last-child {
+        text-align: right;
+      }
+    }
+    p {
+      padding: 6px;
+      font-size: smaller;
+    }
+  }
+}

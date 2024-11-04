@@ -1,0 +1,189 @@
+@import "./variables";
+@import "./mediaquery";
+
+.users {
+  height: 100%;
+  width: 100%;
+  padding: 1em;
+
+  .list {
+    background-color: white;
+    padding: 1em;
+    border-radius: 5px;
+    position: relative;
+
+    h3 {
+      padding: 10px 0 10px 0;
+      font-size: medium;
+    }
+
+    .content {
+      min-height: 30vh;
+    }
+
+    .usrpopup {
+      position: absolute;
+      right: 0;
+      top: 4.5em;
+      bottom: 0;
+      left: 0;
+
+      .container {
+        height: fit-content;
+        width: 40%;
+        background-color: $bg;
+        margin: auto;
+        box-shadow: 2px 2px 10px #60606030;
+        padding: 1em;
+
+        .top {
+          display: grid;
+          grid-template-columns: 1fr auto;
+          gap: 10px;
+          margin: 10px 0 10px 0;
+
+          i {
+            cursor: pointer;
+          }
+        }
+
+        .div2equal {
+          margin: auto;
+        }
+
+        p {
+          font-size: medium;
+          padding: 5px 0 5px 0;
+        }
+
+        .buttons {
+          width: fit-content;
+          margin: auto;
+
+          button {
+            padding: 10px;
+            background-color: $primary;
+            color: white;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+
+    .head,
+    .row {
+      display: grid;
+      grid-template-columns: auto 0.5fr 0.5fr 0.5fr 0.5fr;
+      gap: 10px;
+      padding: 10px;
+    }
+
+    .row {
+      cursor: pointer;
+      margin: 5px 0 5px 0;
+    }
+
+    .row:hover {
+      background-color: $bg;
+    }
+
+    .head {
+      background-color: $bg;
+    }
+
+    .new {
+      button {
+        display: block;
+        margin: 1em auto 1em auto;
+        padding: 12px;
+        width: 80%;
+        background-color: $primary;
+        color: white;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        border-bottom: 2px solid #60606070;
+        border-top: 2px solid #60606070;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: rgba($color: $primary, $alpha: 0.8);
+      }
+      .usrinput {
+        margin: 10xp 0 10px 0;
+
+        h4 {
+          display: block;
+          margin: 10px 0 10px 0;
+          font-weight: 400;
+        }
+
+        input {
+          margin: 0px 0 10px 0;
+          padding: 10px;
+          width: 100%;
+          background-color: #60606030;
+          border-top: none;
+          border-right: none;
+          border-left: none;
+          outline: none;
+          border-bottom: 2px solid #60606070;
+        }
+        input:focus {
+          border-bottom: 2px solid $primary;
+        }
+      }
+      .usrselect {
+        margin: 10xp 0 10px 0;
+
+        h4 {
+          display: block;
+          margin: 10px 0 10px 0;
+          font-weight: 400;
+        }
+
+        select {
+          margin: 0px 0 10px 0;
+          padding: 10px;
+          width: 100%;
+          background-color: #60606030;
+          border-top: none;
+          border-right: none;
+          border-left: none;
+          outline: none;
+          border-bottom: 2px solid #60606070;
+        }
+        input:focus {
+          border-bottom: 2px solid $primary;
+        }
+      }
+    }
+
+    @include maxwidth(mobile) {
+      .row,
+      .head {
+        grid-template-columns: auto 1fr;
+        :nth-child(3) {
+          display: none;
+        }
+        :nth-child(4) {
+          display: none;
+        }
+      }
+    }
+    @include maxwidth(tablet) {
+      .row,
+      .head {
+        grid-template-columns: auto 1fr;
+        :nth-child(3) {
+          display: none;
+        }
+        :nth-child(4) {
+          display: none;
+        }
+      }
+    }
+  }
+}

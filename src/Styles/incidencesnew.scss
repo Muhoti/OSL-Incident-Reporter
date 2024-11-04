@@ -1,0 +1,745 @@
+@import "./variables";
+@import "./0_mediaquery";
+
+.bdy-wrapper {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  //overflow-x: hidden;
+
+  .bdy-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    height: 100%;
+    width: 100%;
+
+    .stats {
+      padding: 2em;
+      height: calc(100vh - 40px);
+      overflow-y: auto;
+
+      .top {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2em;
+      }
+
+      .mid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2em;
+        margin-top: 2em;
+      }
+
+      .bot {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2em;
+        margin-top: 2em;
+      }
+
+      .card {
+        min-height: 40vh;
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 1px 1px 2px 2px #60606010;
+        border: 1px solid #60606020;
+        padding: 1em;
+
+        h3 {
+          font-size: medium;
+          color: $primary;
+          margin: 10px 0 1em 0;
+        }
+      }
+    }
+    .maps {
+      // height: 100% !important;
+      // width: 100%;
+
+      .layers {
+        position: absolute;
+        left: 3em;
+        top: 10px;
+        right: auto;
+        padding: 5px;
+        background-color: rgba($color: #fff, $alpha: 1);
+
+        i {
+          color: $primary;
+          font-size: medium;
+          margin-left: 8px;
+        }
+        h3 {
+          color: $primary;
+          font-size: small;
+          cursor: pointer;
+          font-weight: 400;
+        }
+
+        .container {
+          display: none;
+        }
+
+        .item {
+          display: grid;
+          grid-template-columns: auto 1fr;
+          gap: 10px;
+          border-radius: 4px;
+
+          input {
+            border: 1px solid $primary;
+            outline: none;
+            height: 12px;
+            width: 12px;
+            background-color: transparent;
+          }
+
+          label {
+            line-height: 12px;
+            color: $primary;
+            font-size: x-small;
+          }
+        }
+      }
+
+      .download {
+        position: absolute;
+        bottom: 33px;
+        right: 40px;
+        z-index: 9999;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        a {
+          width: fit-content;
+          color: white;
+          background-color: #5889c2;
+          margin: 0 0 0 5px;
+          display: block;
+          padding: 3px 10px 3px 10px;
+          font-size: small;
+          border-radius: 2px;
+          cursor: pointer;
+        }
+
+        a:hover {
+          background-color: #217de6;
+        }
+
+        i {
+          margin-right: 5px;
+          font-size: smaller;
+        }
+
+        @include maxwidth(mobile) {
+          right: 54px !important;
+        }
+
+        @include maxwidth(tablet) {
+          right: 54px !important;
+        }
+      }
+    }
+
+    .mp {
+      position: relative;
+      height: 100%;
+      width: 100%;
+
+      .map-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+      }
+
+      .download {
+        position: absolute;
+        bottom: 33px;
+        right: 40px;
+        z-index: 9999;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        a {
+          width: fit-content;
+          color: white;
+          background-color: #5889c2;
+          margin: 0 0 0 5px;
+          display: block;
+          padding: 3px 10px 3px 10px;
+          font-size: small;
+          border-radius: 2px;
+          cursor: pointer;
+        }
+
+        a:hover {
+          background-color: #217de6;
+        }
+
+        i {
+          margin-right: 5px;
+          font-size: smaller;
+        }
+
+        @include maxwidth(mobile) {
+          right: 54px !important;
+        }
+
+        @include maxwidth(tablet) {
+          right: 54px !important;
+        }
+      }
+
+      .ol-scale-bar {
+        bottom: 30px;
+        left: 45%;
+        right: auto;
+        top: auto;
+        color: $primary;
+
+        @include maxwidth(mobile) {
+          display: none;
+        }
+
+        @include maxwidth(tablet) {
+          display: none;
+        }
+      }
+
+      .ol-zoom {
+        top: auto;
+        bottom: 64px;
+        left: auto;
+        right: 10px;
+      }
+
+      .ol-zoom-extent {
+        top: auto;
+        bottom: 30px;
+        left: auto;
+        right: 10px;
+      }
+
+      .analyses {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        width: fit-content;
+
+        select {
+          width: 100%;
+          background-color: rgba($color: #fff, $alpha: 1);
+          border-radius: 4px;
+
+          font-style: normal;
+          font-weight: 400;
+          font-size: small;
+          padding: 2px;
+          text-align: center;
+          color: $primary;
+          border: 1px solid $primary;
+          cursor: pointer;
+          display: block;
+          margin: 5px;
+          outline: none;
+          border-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cstyle%3Epath%7Banimation:stroke 5s infinite linear%3B%7D%40keyframes stroke%7Bto%7Bstroke-dashoffset:776%3B%7D%7D%3C/style%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232d3561' /%3E%3Cstop offset='25%25' stop-color='%23c05c7e' /%3E%3Cstop offset='50%25' stop-color='%23f3826f' /%3E%3Cstop offset='100%25' stop-color='%23ffb961' /%3E%3C/linearGradient%3E %3Cpath d='M1.5 1.5 l97 0l0 97l-97 0 l0 -97' stroke-linecap='square' stroke='url(%23g)' stroke-width='3' stroke-dasharray='388'/%3E %3C/svg%3E")
+            1;
+        }
+      }
+
+      .layers {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        background-color: rgba($color: #fff, $alpha: 1);
+
+        i {
+          color: $primary;
+          font-size: medium;
+          margin-left: 8px;
+        }
+
+        h3 {
+          color: $primary;
+          font-size: small;
+          cursor: pointer;
+          font-weight: 400;
+          border: 1px solid $primary;
+          border-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cstyle%3Epath%7Banimation:stroke 5s infinite linear%3B%7D%40keyframes stroke%7Bto%7Bstroke-dashoffset:776%3B%7D%7D%3C/style%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232d3561' /%3E%3Cstop offset='25%25' stop-color='%23c05c7e' /%3E%3Cstop offset='50%25' stop-color='%23f3826f' /%3E%3Cstop offset='100%25' stop-color='%23ffb961' /%3E%3C/linearGradient%3E %3Cpath d='M1.5 1.5 l97 0l0 97l-97 0 l0 -97' stroke-linecap='square' stroke='url(%23g)' stroke-width='3' stroke-dasharray='388'/%3E %3C/svg%3E")
+            1;
+          padding: 5px;
+        }
+
+        .container {
+          display: none;
+          padding: 5px;
+        }
+
+        .item {
+          display: grid;
+          grid-template-columns: auto 1fr;
+          gap: 10px;
+          margin: 5px 0 5px 0;
+          border-radius: 4px;
+
+          input {
+            border: 1px solid $primary;
+            outline: none;
+            height: 12px;
+            width: 12px;
+            background-color: transparent;
+          }
+
+          label {
+            line-height: 12px;
+            color: $primary;
+            font-size: x-small;
+          }
+        }
+      }
+
+      .legend {
+        position: absolute;
+        left: 10px;
+        bottom: 30px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: rgba($color: #fff, $alpha: 0.8);
+
+        .cwrap {
+          display: grid;
+          grid-template-columns: auto 1fr;
+          gap: 10px;
+          font-size: x-small;
+          margin-bottom: 3px;
+
+          .circle {
+            border: 2px solid yellow;
+            background-color: aqua;
+            height: 16px;
+            width: 16px;
+            border-radius: 24px;
+            font-size: x-small;
+            text-align: center;
+            line-height: 16px;
+          }
+        }
+
+        .rwrap {
+          display: grid;
+          grid-template-columns: auto 1fr;
+          gap: 10px;
+          font-size: x-small;
+
+          .circle {
+            border: 2px solid yellow;
+            background-color: green;
+            height: 16px;
+            width: 16px;
+            border-radius: 24px;
+            font-size: x-small;
+            text-align: center;
+            line-height: 16px;
+          }
+        }
+
+        .hwrap {
+          width: 120px;
+          gap: 10px;
+          font-size: x-small;
+
+          .circle {
+            border: 2px solid yellow;
+            background-image: linear-gradient(to right, red, green);
+            height: 16px;
+            width: 100%;
+            border-radius: 24px;
+            font-size: x-small;
+            text-align: center;
+            line-height: 16px;
+          }
+        }
+
+        .gwrap {
+          display: grid;
+          grid-template-columns: auto 1fr;
+          gap: 10px;
+          font-size: x-small;
+
+          .male {
+            border: 2px solid yellow;
+            background-color: blue;
+            height: 16px;
+            width: 16px;
+            border-radius: 24px;
+            font-size: x-small;
+            text-align: center;
+            line-height: 16px;
+            margin-bottom: 10px;
+          }
+
+          .female {
+            border: 2px solid yellow;
+            background-color: purple;
+            height: 16px;
+            width: 16px;
+            border-radius: 24px;
+            font-size: x-small;
+            text-align: center;
+            line-height: 16px;
+          }
+        }
+
+        .awrap {
+          display: grid;
+          grid-template-columns: auto 1fr;
+          gap: 10px;
+          font-size: x-small;
+
+          .a1 {
+            border: 2px solid yellow;
+            background-color: #0088fe;
+            height: 16px;
+            width: 16px;
+            border-radius: 24px;
+            font-size: x-small;
+            text-align: center;
+            line-height: 16px;
+            margin-bottom: 10px;
+          }
+
+          .a2 {
+            border: 2px solid yellow;
+            background-color: #00c49f;
+            height: 16px;
+            width: 16px;
+            border-radius: 24px;
+            font-size: x-small;
+            text-align: center;
+            line-height: 16px;
+            margin-bottom: 10px;
+          }
+
+          .a3 {
+            border: 2px solid yellow;
+            background-color: #ffbb28;
+            height: 16px;
+            width: 16px;
+            border-radius: 24px;
+            font-size: x-small;
+            text-align: center;
+            line-height: 16px;
+          }
+        }
+      }
+    }
+
+    .r_analysis {
+      //   position: absolute;
+      max-height: calc(100vh - 80px) !important;
+      height: 80%;
+      max-width: 40vw;
+      width: 100%;
+      z-index: 9999999999999;
+      top: 60px;
+      right: 5px;
+      background-color: transparent;
+      text-align: center;
+      display: grid;
+      grid-template-rows: auto auto;
+      gap: 5px;
+      overflow: hidden;
+   
+      .divs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5px;
+        min-height: 30vh;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+
+        .r_chart {
+          height: 100%;
+          text-align: center;
+          border-radius: 5px;
+          overflow: hidden;
+          background-color: white;
+
+          .chart-text {
+            font-size: x-small;
+            color: black;
+          }
+
+          .title {
+            font-size: small;
+            font-weight: 600;
+            color: $primary;
+            background-color: white;
+            height: 32px;
+            line-height: 32px;
+            box-shadow: 1px 1px #60606040;
+          }
+          .r_content {
+            border-radius: 5px;
+            font-size: small;
+            color: white;
+
+            .categories {
+              p {
+                height: 40px;
+                line-height: 20px;
+                overflow: auto;
+                align-content: center;
+                text-align: center;
+                align-items: center;
+              }
+            }
+          }
+        }
+      }
+
+      .bottom_table {
+        background-color: $primary;
+        height: fit-content;
+        border-radius: 5px;
+
+        h3 {
+          color: white;
+          padding: 5px;
+          font-size: medium;
+        }
+
+        .bhead,
+        .row {
+          background-color: $secondary;
+          display: grid;
+          grid-template-columns: 0.3fr 0.5fr 0.8fr 1fr 1fr;
+          gap: 5px;
+          width: 100%;
+          padding: 3px 5px 3px 5px;
+
+          h4 {
+            padding: 2px;
+            width: 100% !important;
+            text-align: left;
+            font-size: small !important;
+            color: white;
+          }
+        }
+        .brow {
+          background-color: $secondary;
+          .row {
+            background-color: transparent;
+            box-shadow: 1px 1px 1px #60606020;
+
+            cursor: pointer;
+
+            p {
+              text-align: left;
+              width: 100%;
+              font-size: x-small !important;
+              overflow: hidden;
+              white-space: nowrap;
+              color: white;
+              padding: 5px 5px 5px 5px;
+            }
+          }
+          .row:hover {
+            background-color: #60606020;
+            box-shadow: 1px 1px 1px #60606040;
+          }
+        }
+
+        .footer {
+          display: grid;
+          grid-template-columns: auto 1fr;
+          color: white;
+          font-size: small;
+
+          p {
+            margin: auto 10px auto 5px;
+            height: fit-content;
+            display: block;
+            padding: 1px;
+          }
+
+
+        }
+      }
+
+      .top_table {
+        background-color: white;
+        height: 100%;
+        border-radius: 5px;
+
+        .title {
+          display: grid;
+          grid-template-columns: 1.5fr 0.1fr;
+          box-shadow: 1px 1px #60606020;
+          h3 {
+            height: 32px;
+            line-height: 32px;
+            color: $primary;
+            font-size: small;
+          }
+          .fa {
+            float: right;
+            color: $primary;
+            cursor: pointer;
+          }
+          .fa:hover {
+            color: $accent;
+          }
+        }
+
+        .bhead,
+        .row {
+          box-shadow: 1px 1px #60606020;
+          display: grid;
+          grid-template-columns: 0.3fr 0.5fr 0.8fr 1fr 1.5fr;
+          gap: 5px;
+          width: 100%;
+          padding: 5px 5px 5px 5px;
+
+          h4 {
+            padding: 2px;
+            width: 100% !important;
+            text-align: left;
+            font-size: small;
+            font-weight: 500;
+          }
+        }
+        .brow {
+          .row {
+            background-color: #60606020;
+            box-shadow: 1px 1px 1px #60606020;
+            padding: 5px 5px 5px 5px;
+            cursor: pointer;
+
+            p {
+              text-align: left;
+              width: 100%;
+              font-size: small !important;
+              overflow: hidden;
+              white-space: nowrap;
+              color: black;
+              font-weight: 200;
+            }
+
+            select {
+              border: 1px solid transparent;
+              background-color: transparent;
+              color: black;
+              cursor: pointer;
+              font-size: small;
+              font-weight: 200;
+            }
+            select:hover {
+              border: 1px solid $primary;
+            }
+            select option {
+              padding: 10px;
+              color: $primary;
+              text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+            }
+          }
+          .row:hover {
+            background-color: #60606020;
+            box-shadow: 1px 1px 1px #60606040;
+          }
+        }
+
+        .footer {
+          display: grid;
+          grid-template-columns: auto 1fr;
+          color: $primary;
+          font-size: small;
+
+          p {
+            margin: auto 10px auto 5px;
+            height: fit-content;
+            display: block;
+            padding: 1px;
+            font-size: small;
+          }
+
+        }
+
+        .showPopUp {
+          position: fixed;
+          background-color: white;
+          max-width: 20vw;
+          width: 100%;
+          padding: 1em;
+          top: 60px;
+          right: calc(40vw + 10px);
+          box-shadow: 2px 2px #60606040;
+          border-radius: 8px;
+
+          .conf {
+            position: relative;
+          }
+
+          p {
+            white-space: inherit !important;
+            text-align: center !important;
+          }
+
+          select {
+            width: 100%;
+            border: 1px solid #60606040 !important;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 5px 10px !important;
+          }
+
+          button {
+            padding: 5px 10px;
+            border: none;
+            color: white;
+            background-color: green;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+          button:hover {
+            background-color: $accent;
+          }
+
+          .div2equal {
+            :last-child {
+              background-color: red;
+            }
+          }
+        }
+      }
+    }
+
+    .analysis_hidden {
+      display: none;
+    }
+
+    .expand {
+      position: absolute;
+      z-index: 99999;
+      top: 10px;
+      right: 10px;
+      color: #fff;
+      background-color: $primary;
+      padding: 3px 6px 3px 6px;
+      cursor: pointer;
+    }
+    .expand:hover {
+      background-color: $accent;
+    }
+    .expand_hidden {
+      display: none;
+    }
+  }
+}
